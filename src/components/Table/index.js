@@ -6,15 +6,6 @@ function Table(props) {
     function getName(name) {
         return `${name.first} ${name.last}`;
     }
-    function getId(id) {
-        return `${id.value}`
-    }
-    function getImage(picture) {
-        return `${picture.thumbnail}`
-    }
-    function getAge (dob) {
-        return `${dob.age}`;
-    }
     return (
         <table className="table text-center m-5">
             <thead className="thead-dark">
@@ -33,12 +24,12 @@ function Table(props) {
             </thead>
             <tbody>
                 {props.employees.map(employee => (
-                    <tr key={getId(employee.id)}>
-                        <td><img alt="employee" src={getImage(employee.picture)}/></td>
+                    <tr key={employee.id.value}>
+                        <td><img alt="employee" src={employee.picture.thumbnail}/></td>
                         <td>{getName(employee.name)}</td>
                         <td>{employee.phone}</td>
                         <td>{employee.email}</td>
-                        <td>{getAge(employee.dob)}</td>
+                        <td>{employee.dob.age}</td>
                     </tr>
                 ))}
             </tbody>
