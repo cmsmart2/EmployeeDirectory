@@ -4,7 +4,7 @@ import Table from "../components/Table";
 import SearchBar from "../components/Search";
 
 
-const sorters = {
+const sort = {
   byName(a,b){
     return a.fullName > b.fullName ? 1: -1
   }
@@ -24,31 +24,25 @@ class Directory extends Component {
     componentDidMount() {
       API.getEmployees()
       .then(res => {
-          console.log(res.data);
           this.setState({ ...this.state,
             employees: res.data.results.map(e => {
               return {
                 ...e,
-                searchable: Object.values(e.name).map( n => n.toLowerCase()).join(''),
+                searchable: Object.values(e.name).map( n => n.toString()).join(''),
                 fullName: e.name.first + ' ' + e.name.last,
               }
             }),
           });
-          console.log(this.state);
         })
       .catch(err => console.log(err));
     };
 
     handleInputChange = event => {
-      this.setState({
-        ...this.state,
-        search: event.target.value,
-      });
-      console.log(this.state.search);
+      this.setState({search: event.target.value,});
     };
 
     handleSort = () => {
-      let listName = this.state.employees.sort(sorters[this.state.sortBy]);
+      let listName = this.state.employees.sort(sort[this.state.sortBy]);
       if (this.state.sortAscending) {
         this.setState({
           ...this.state,
@@ -62,7 +56,7 @@ class Directory extends Component {
     };
 
     handleSortReverse = () => {
-      let listName = this.state.employees.sort(sorters[this.state.sortBy]);
+      let listName = this.state.employees.sort(sort[this.state.sortBy]);
       if (this.state.sortAscending) {
         this.setState({
           ...this.state,
