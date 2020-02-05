@@ -15,6 +15,7 @@ class Directory extends Component {
     state = {
       search: "",
       employees: [],
+      employeeList: [],
       sortAscending: true,
       sortBy: 'byName',
       error: ""
@@ -68,6 +69,24 @@ class Directory extends Component {
         });
       }
     };
+
+    // sortByName (){
+    //   const {employeeList} = this.state
+    //   let newemployeesList = employeeList
+    //   if (this.state.sortAscending){
+    //     newemployeesList = employeeList.sort((a, b) => a.fullname > b.date)
+    //   } else {
+    //     newemployeesList = employeeList.sort((a, b) => a.fullname < b.date)
+    //   }
+    //   this.setState({
+    //     sortAscending: !this.state.sortAscending,
+    //     employeeList: newemployeesList
+    //   })
+    // }
+
+    // toggleSortName(event){
+    //   this.sortByName()
+    // }
     
   
     render() {
@@ -82,6 +101,7 @@ class Directory extends Component {
         />
           <Table
           employees={list} 
+          // handleToggle = {this.toggleSortName}
           handleSort={this.handleSort} 
           handleSortReverse={this.handleSortReverse}
           />
