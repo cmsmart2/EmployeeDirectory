@@ -4,7 +4,9 @@ This is a basic employee directory using React to pull random people from an API
 
 created by Cera Smart
 
-Employee DirectoryStart
+Employee Directory Start
+
+https://cmsmart2.github.io/EmployeeDirectory/
 
 Simply go to the GitHub Pages link above.
 
